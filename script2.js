@@ -3,20 +3,28 @@ window.onload=function(){
 //console.log("complete");
 
 var twoFields=function twoFields () {
-alert("testTwoFields");
+var name=localStorage.username;
 var textStore=document.getElementById("login");
 document.getElementById("log").style.display = "none";
 document.getElementById("question").style.display = "none";
 document.getElementById("name").style.display="inline-block";
 document.getElementById("pass").style.display="inline-block";
 document.getElementById("nextButton").style.display="none";
-};
+var namex=getElementById("nameSpace").value;
+var passex=getElementById("passSpace").value;
+localStorage.username=namex;
+localStorage.password=passex;
+}
 
-/*var name=localStorage.username;
-if(!name){
-name=prompt("What is your name?");
-localStorage.username=name;}
-alert(name);};*/
+
+if(name){
+var welcome= document.createTextNode("Hello "+name);
+login.appendChild(welcome);
+document.getElementById("question").style.display="none";
+}
+
+
+
 var login= document.getElementById("log")
 login.addEventListener("click",twoFields,false);
 
