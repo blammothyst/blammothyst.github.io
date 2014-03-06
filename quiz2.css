@@ -1,4 +1,4 @@
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5{
     text-align:center;
 }
 div, [type="radio"] {
@@ -7,4 +7,7 @@ div, [type="radio"] {
 .button {
     margin-left:10px;
     margin-top:20px;
+}
+#visibleForm{
+text-align:center;
 }

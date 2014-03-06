@@ -1,6 +1,25 @@
 window.onload=function(){
 //var allQuestions= $.getJSON( "questions.json", function() {
 //console.log("complete");
+
+var twoFields=function twoFields () {
+alert("testTwoFields");
+var textStore=document.getElementById("login");
+/*document.getElementById("log").style.display = "none";*/
+/*document.getElementById("question").style.display = "none";*/
+document.getElementById("name").style.display="inline-block";
+document.getElementById("pass").style.display="inline-block";
+};
+
+/*var name=localStorage.username;
+if(!name){
+name=prompt("What is your name?");
+localStorage.username=name;}
+alert(name);};*/
+var login= document.getElementById("log")
+login.addEventListener("click",twoFields,false);
+
+
 var allQuestions=(function () {
     allQuestions = null;
     $.ajax({
@@ -19,6 +38,8 @@ var counter = 0;
 var arrayScore = [];
 var totals = 0;
 document.getElementById("backButton").style.display = "none";
+document.getElementById("name").style.display = "none";
+document.getElementById("pass").style.display = "none";
 
 function fill() {
     $("#visibleForm").fadeOut("slow", function () {
