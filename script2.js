@@ -25,8 +25,9 @@ login.appendChild(welcome);
 document.getElementById("question").style.display="none";
 }
 
-
-
+if(counter>0){
+document.getElementById("login").style.display="none";
+}
 
 
 
@@ -87,6 +88,7 @@ function fill() {
             }
         }
     });
+   
     $("#visibleForm").fadeIn("slow");
     }
 
@@ -95,6 +97,8 @@ function fill() {
 console.log("progress up to next()");
     //make a function that runs when you hit next
     function next() {
+ 
+document.getElementById("login").style.display="none";
 
         console.log(counter);
         if (counter > 0) {
