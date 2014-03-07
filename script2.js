@@ -52,7 +52,7 @@ if(document.getElementById("backButton")){document.getElementById("backButton").
 
 
 function fill() {
-    $("#visibleForm").fadeOut("slow", function () {
+    $("#visibleForm").fadeOut(200, function () {
 
         if (allQuestions[counter - 1]) {
             var newQText = document.createTextNode(allQuestions[counter - 1].question);
@@ -89,7 +89,7 @@ function fill() {
         }
     });
    
-    $("#visibleForm").fadeIn("slow");
+    $("#visibleForm").fadeIn(200);
     }
 
     
