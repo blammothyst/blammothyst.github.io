@@ -97,7 +97,7 @@ function fill() {
 console.log("progress up to next()");
     //make a function that runs when you hit next
     function next() {
- document.getElementById("question").style.display="inline";
+document.getElementById("question").style.display="inline";
 document.getElementById("login").style.display="none";
 
         console.log(counter);
