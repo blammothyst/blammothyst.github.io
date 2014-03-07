@@ -1,6 +1,4 @@
-h1, h2, h3, h4, h5{
-    text-align:center;
-}
+
 div, [type="radio"] {
     padding-left:40px;
 }
@@ -9,5 +7,14 @@ div, [type="radio"] {
     margin-top:20px;
 }
 #visibleForm{
+text-align:center;
+}
+h1, h2, h3, h4, h5,#username,#password,#userHtml,#passHtml,#former
+ {
+    text-align:center;
+    
+}
+#cancelButton, #logButton {
+display:inline;
 text-align:center;
 }

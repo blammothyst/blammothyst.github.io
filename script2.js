@@ -1,22 +1,24 @@
 window.onload=function(){
 //var allQuestions= $.getJSON( "questions.json", function() {
 //console.log("complete");
-
-var twoFields=function twoFields () {
-var name=localStorage.username;
-var textStore=document.getElementById("login");
-document.getElementById("log").style.display = "none";
-document.getElementById("question").style.display = "none";
-document.getElementById("name").style.display="inline-block";
-document.getElementById("pass").style.display="inline-block";
-document.getElementById("nextButton").style.display="none";
-var namex=getElementById("nameSpace").value;
-var passex=getElementById("passSpace").value;
+if(document.getElementById("logButton")){
+document.getElementById("logButton").addEventListener("click",function(){
+var namex=document.getElementById("userHtml").value;
+var passex=document.getElementById("passHtml").value;
 localStorage.username=namex;
 localStorage.password=passex;
-}
+window.location="index.html";
+},false);}
+if(document.getElementById("cancelButton")){
+document.getElementById("cancelButton").addEventListener("click",function(){window.location="index.html";}
+,false);}
 
 
+/*var twoFields=function twoFields () {
+
+}*/
+
+var name=localStorage.username;
 if(name){
 var welcome= document.createTextNode("Hello "+name);
 login.appendChild(welcome);
@@ -25,11 +27,10 @@ document.getElementById("question").style.display="none";
 
 
 
-var login= document.getElementById("log")
-login.addEventListener("click",twoFields,false);
 
 
-/*var allQuestions=(function () {
+
+var allQuestions=(function () {
     allQuestions = null;
     $.ajax({
         'async': false,
@@ -41,14 +42,13 @@ login.addEventListener("click",twoFields,false);
         }
     });
     return json;
-})(); */
+})(); 
 //make a counter and a score
 var counter = 0;
 var arrayScore = [];
 var totals = 0;
-document.getElementById("backButton").style.display = "none";
-document.getElementById("name").style.display = "none";
-document.getElementById("pass").style.display = "none";
+if(document.getElementById("backButton")){document.getElementById("backButton").style.display = "none";}
+
 
 function fill() {
     $("#visibleForm").fadeOut("slow", function () {
@@ -128,7 +128,7 @@ console.log("progress up to next()");
         fill();
     }
 
-    document.getElementById("backButton").onclick = function back() {
+    if(document.getElementById("backButton")){document.getElementById("backButton").onclick = function back() {
         counter--;
         console.log("back prefill counter: " + counter)
         console.log("back prefill arrayScore[counter-1] value: " + arrayScore[counter - 1]);
@@ -136,4 +136,4 @@ console.log("progress up to next()");
         document.getElementById("nextButton").style.display = "inline";
     };
 $("#nextButton").click(next);
-}
+}}
