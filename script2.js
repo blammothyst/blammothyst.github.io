@@ -1,16 +1,17 @@
-window.onload=function(){
-//var allQuestions= $.getJSON( "questions.json", function() {
+$(document).ready(function(){
+//var allQtions= $.getJSON( "questions.json", function() {
 //console.log("complete");
-if(document.getElementById("logButton")){
-document.getElementById("logButton").addEventListener("click",function(){
-var namex=document.getElementById("userHtml").value;
-var passex=document.getElementById("passHtml").value;
+if($("#logButton")){
+$("#logButton").addEventListener("click",function(){
+var namex=$("#userHtml").value;
+var passex=$("#passHtml").value;
 localStorage.username=namex;
 localStorage.password=passex;
 window.location="index.html";
 },false);}
-if(document.getElementById("cancelButton")){
-document.getElementById("cancelButton").addEventListener("click",function(){window.location="index.html";}
+if($
+("#cancelButton")){
+$("#cancelButton").addEventListener("click",function(){window.location="index.html";}
 ,false);}
 
 
@@ -22,16 +23,37 @@ var name=localStorage.username;
 if(name){
 var welcome= document.createTextNode("Hello "+name);
 login.appendChild(welcome);
-document.getElementById("question").style.display="none";
+$("#question").style.display="none";
 }
 
 if(counter>0){
-document.getElementById("login").style.display="none";
+$("#login").style.display="none";
 }
 
 
 
-var allQuestions=(function () {
+var allQuestions=[{
+    "question": "Who's the Boss?",
+    "choices": ["Tony Danza (hint: this is correct)", "Lumberg", "Charles/Scott Baio", "Not this one"],
+    "correctAnswer": 0
+}, {
+    "question": "Where were the 2014 Winter Olympics held?",
+    "choices": ["America", "Florida", "THE United States of America", "Sochi, Russia", "Jamaica!", "Argentina"],
+    "correctAnswer": 3
+}, {
+    "question": "Where is the World Cup being held during summer 2014?",
+    "choices": ["USA", "Qatar", "Brazil", "Argentina"],
+    "correctAnswer": 2
+}, {
+    "question": "What color are Bob Costa's eyes when he has pink eye?",
+    "choices": ["White", "Blue", "Pink", "Translucent"],
+    "correctAnswer": 2
+}, {
+    "question": "Who won Superbowl XLVIII (played 2/2/2014)?",
+    "choices": ["Denver Broncos", "Seattle Seahawks", "Omaha", "Troy Aikman"],
+    "correctAnswer": 1
+}]
+/*(function () {
     allQuestions = null;
     $.ajax({
         'async': false,
@@ -43,12 +65,14 @@ var allQuestions=(function () {
         }
     });
     return json;
-})(); 
+})(); */
 //make a counter and a score
 var counter = 0;
 var arrayScore = [];
 var totals = 0;
-if(document.getElementById("backButton")){document.getElementById("backButton").style.display = "none";}
+if($
+("#backButton")){$
+("#backButton").style.display = "none";}
 
 
 function fill() {
@@ -57,16 +81,18 @@ function fill() {
         if (allQuestions[counter - 1]) {
             var newQText = document.createTextNode(allQuestions[counter - 1].question);
             //identify parent node to accept question from array  
-            var qParent = document.getElementById("question");
+            var qParent = $
+        ("#question");
             //add new question child to node, replacing old node child
             qParent.replaceChild(newQText, qParent.childNodes[0]);
             //identify parent node to accept choice inputs
-            var choiceP = document.getElementById("choices");
+            var choiceP = $
+        ("#choices");
             //clear all children
             while (choiceP.firstChild) {
                 choiceP.removeChild(choiceP.firstChild);
             };
-            for (i = 0, k = allQuestions[counter - 1].choices.length; i < k; i++) {
+            for (var i = 0, var k = allQuestions[counter - 1].choices.length; i < k; i++) {
                 var newCText = document.createTextNode(allQuestions[counter - 1].choices[i]);
                 var newLabel = document.createElement("label");
                 var newRB = document.createElement("input");
@@ -81,9 +107,11 @@ function fill() {
                 newLabel.appendChild(newCText);
                 newLabel.appendChild(br);
                 if (counter > 1) {
-                    document.getElementById("backButton").style.display = "inline";
+                    $
+                ("#backButton").style.display = "inline";
                 } else {
-                    document.getElementById("backButton").style.display = "none";
+                    $
+                ("#backButton").style.display = "none";
                 }
             }
         }
@@ -97,14 +125,15 @@ function fill() {
 console.log("progress up to next()");
     //make a function that runs when you hit next
     function next() {
-document.getElementById("question").style.display="inline";
-document.getElementById("login").style.display="none";
+$("#question").style.display="inline";
+$("#login").style.display="none";
 
         console.log(counter);
         if (counter > 0) {
             //loop through child nodes to get checked status
             for (i = 0, k = allQuestions[counter - 1].choices.length; i < k; i++) {
-                if (counter > 0 && document.getElementById("choices").childNodes[i].childNodes[0].checked) {
+                if (counter > 0 && $
+                ("#choices").childNodes[i].childNodes[0].checked) {
                     arrayScore[counter - 1] = i;
                     counter++;
                 }
@@ -112,16 +141,21 @@ document.getElementById("login").style.display="none";
         }
         //if last question has been shown, show score
         if (counter - 1 == allQuestions.length) {
-            while (document.getElementById("choices").firstChild) {
-                document.getElementById("choices").removeChild(document.getElementById("choices").firstChild);
+            while ($
+            ("#choices").firstChild) {
+                $
+        ("#choices").removeChild($
+                ("#choices").firstChild);
             };
             for (var i = 0, k = allQuestions.length; i < k; i++) {
                 if (arrayScore[i] === allQuestions[i].correctAnswer) {
                     totals++;
                 }
             }
-            document.getElementById("question").innerHTML = totals + " " + "out of" + " " + allQuestions.length + " " + "isn't bad!";
-            document.getElementById("nextButton").style.display = "none";
+            $
+        ("#question").innerHTML = totals + " " + "out of" + " " + allQuestions.length + " " + "isn't bad!";
+            $
+        ("#nextButton").style.display = "none";
             totals = 0;
         }
         if (counter === 0) {
@@ -132,12 +166,16 @@ document.getElementById("login").style.display="none";
         fill();
     }
 
-    if(document.getElementById("backButton")){document.getElementById("backButton").onclick = function back() {
+    if($
+    ("#backButton")){$
+    ("#backButton").onclick = function back() {
         counter--;
         console.log("back prefill counter: " + counter)
         console.log("back prefill arrayScore[counter-1] value: " + arrayScore[counter - 1]);
         fill();
-        document.getElementById("nextButton").style.display = "inline";
+        $
+    ("#nextButton").style.display = "inline";
     };
 $("#nextButton").click(next);
-}}
+}
+);//ready   
